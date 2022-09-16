@@ -14,13 +14,15 @@ Amplify.configure(config);
 
 function App({ signOut }) {
   return (
-    <View className="App">
-      <Card>
-        <Image src={logo} className="App-logo" alt="logo" />
-        <Heading level={1}>We now have Auth!</Heading>
-      </Card>
-      <Button onClick={signOut}>Sign Out</Button>
-    </View>
+    <div className="h-100 d-flex align-items-center justify-content-center">
+      <View className="App">
+        <Card>
+          <Image src={logo} className="App-logo" alt="logo" />
+          <Heading level={1}>We now have Auth!</Heading>
+        </Card>
+        <Button onClick={signOut}>Sign Out</Button>
+      </View>
+    </div>
   );
 }
 
