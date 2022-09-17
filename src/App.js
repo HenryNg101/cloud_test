@@ -60,26 +60,21 @@ function App({ signOut, user }) {
   }
 
   async function createNote() {
-    console.log(formData);
-    if(!formData.image) return;
+    if(!formData.image){
+      alert("Please select a file to upload first");
+      return;
+    }
     await API.graphql({ query: createNoteMutation, variables: { input: formData } });
-    /*if (formData.image) {
-      const image = await Storage.get(formData.image);
-      formData.image = image;
-    }*/
-    //Tell user here that image upload is succeeded
-    console.log("Image uploaded successfully");
-    setFormData(initialFormState);
+    alert("The file is sucessfully uploaded");
+    setFormData({...formData, user: '', image: ''});
+    document.getElementById('file_upload').value = '';
   }
 
   return (
     <div className="App">
       <h1>Welcome to Nubers App</h1>
       <h2>Please upload your identification file by clicking the button below, for identification check</h2>
-      <input
-        type="file"
-        onChange={onChange}
-      />
+      <input type="file" onChange={onChange} id="file_upload" />
       <button onClick={createNote}>Upload file</button>
       <button onClick={signOut}>Sign Out</button>
     </div>
