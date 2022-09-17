@@ -13,12 +13,11 @@
     },
     "categories": {
       "auth": {
-        "cloudtestf78d3678": {
-          "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"515140463097-jma2qs820hmm9n3m0965i53c9v13tng5.apps.googleusercontent.com\",\"client_secret\":\"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\"}]"
-        },
         "Cognito": {
           "googleClientId": "515140463097-jma2qs820hmm9n3m0965i53c9v13tng5.apps.googleusercontent.com"
-        }
+        },
+        "true": {},
+        "cloudtestf477d072": {}
       }
     }
   }

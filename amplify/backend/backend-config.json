@@ -1,6 +1,6 @@
 {
   "auth": {
-    "cloudtestf78d3678": {
+    "cloudtestf477d072": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -9,9 +9,7 @@
         "socialProviders": [
           "GOOGLE"
         ],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
+        "usernameAttributes": [],
         "signupAttributes": [
           "EMAIL"
         ],
