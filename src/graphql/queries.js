@@ -5,6 +5,7 @@ export const getNote = /* GraphQL */ `
   query GetNote($id: ID!) {
     getNote(id: $id) {
       id
+      user
       image
       createdAt
       updatedAt
@@ -20,6 +21,7 @@ export const listNotes = /* GraphQL */ `
     listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        user
         image
         createdAt
         updatedAt
