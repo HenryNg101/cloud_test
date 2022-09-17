@@ -10,6 +10,10 @@ import {
 } from "@aws-amplify/ui-react";
 import Amplify from 'aws-amplify';
 import awsConfig from './aws-exports';
+import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from './graphql/mutations';
+import { listNotes } from './graphql/queries';
+import { API, Storage } from "aws-amplify";
+import { useState, useEffect } from "react";
 
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
@@ -43,16 +47,41 @@ const updatedAwsConfig = {
 
 Amplify.configure(updatedAwsConfig);
 
-function App({ signOut }) {
+const initialFormState = { user: '', image: '' }
+
+function App({ signOut, user }) {
+  const [formData, setFormData] = useState(initialFormState);
+
+  async function onChange(e) {
+    if (!e.target.files[0]) return
+    const file = e.target.files[0];
+    setFormData({ ...formData, user: user.username, image: file.name });
+    await Storage.put(file.name, file);
+  }
+
+  async function createNote() {
+    console.log(formData);
+    if(!formData.image) return;
+    await API.graphql({ query: createNoteMutation, variables: { input: formData } });
+    /*if (formData.image) {
+      const image = await Storage.get(formData.image);
+      formData.image = image;
+    }*/
+    //Tell user here that image upload is succeeded
+    console.log("Image uploaded successfully");
+    setFormData(initialFormState);
+  }
+
   return (
-    <div className="h-100 d-flex align-items-center justify-content-center">
-      <View className="App">
-        <Card>
-          <Image src={logo} className="App-logo" alt="logo" />
-          <Heading level={1}>We now have Auth! smt</Heading>
-        </Card>
-        <Button onClick={signOut}>Sign Out</Button>
-      </View>
+    <div className="App">
+      <h1>Welcome to Nubers App</h1>
+      <h2>Please upload your identification file by clicking the button below, for identification check</h2>
+      <input
+        type="file"
+        onChange={onChange}
+      />
+      <button onClick={createNote}>Upload file</button>
+      <button onClick={signOut}>Sign Out</button>
     </div>
   );
 }

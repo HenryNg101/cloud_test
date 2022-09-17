@@ -1,0 +1,11 @@
+{
+  "resourceName": "s3f08594cb",
+  "policyUUID": "f08594cb",
+  "bucketName": "cloudtestce6d624014e04023ada9508a0c1899b5",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE"
+  ],
+  "groupAccess": {}
+}

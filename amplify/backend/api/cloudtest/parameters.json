@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "cloudtest",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2022-09-17T14:51:33.537Z"
+}
